@@ -72,9 +72,7 @@ function ItemList() {
               <td>{item.place?.name}</td>
 
               <td>
-                <a href={`/items/edit/${item.id}`}>
-                  <button>Edit</button>
-                </a>
+                <a href={`/items/edit/${item.id}`}>Edit</a>
               </td>
             </tr>
           ))}
