@@ -22,13 +22,30 @@ function CupboardList() {
     <div>
       <h2>Cupboards</h2>
 
-      <ul>
-        {cupboards.map((c) => (
-          <li key={c.id}>
-            {c.name} - {c.location}
-          </li>
-        ))}
-      </ul>
+      <table border="1" width="100%" cellPadding="10">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {cupboards.map((cupboard) => (
+            <tr key={cupboard.id}>
+              <td>{cupboard.id}</td>
+              <td>{cupboard.name}</td>
+              <td>{cupboard.location}</td>
+
+              <td>
+                <a href={`/cupboards/edit/${cupboard.id}`}>Edit</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
