@@ -5,21 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Place extends Model
+class Item extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'cupboard_id',
         'name',
         'code',
+        'quantity',
+        'serial_number',
+        'image',
+        'description',
+        'place_id',
+        'status',
     ];
-    public function cupboard()
-    {
-        return $this->belongsTo(Cupboard::class);
-    }
 
-    public function items()
+    public function place()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Place::class);
     }
 }
