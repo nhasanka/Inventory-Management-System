@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CupboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\PlaceController;
 use App\Http\Controllers\API\UserController;
 
 
@@ -25,4 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/cupboards', [CupboardController::class, 'store']);
     Route::get('/cupboards/{id}', [CupboardController::class, 'show']);
     Route::put('/cupboards/{id}', [CupboardController::class, 'update']);
+
+    // place routes
+    Route::get('/places', [PlaceController::class, 'index']);
+    Route::post('/places', [PlaceController::class, 'store']);
+    Route::get('/places/{id}', [PlaceController::class, 'show']);
+    Route::put('/places/{id}', [PlaceController::class, 'update']);
 });
