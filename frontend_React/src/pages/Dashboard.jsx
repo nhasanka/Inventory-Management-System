@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Tile from "../components/Tile/Tile";
 import "./style.css";
+import Users from "./Users";
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
