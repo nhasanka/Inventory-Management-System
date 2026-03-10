@@ -8,6 +8,7 @@ import Cupboards from "./pages/Cupboards";
 import EditCupboard from "./pages/EditCupboard";
 import Places from "./pages/Places";
 import EditPlace from "./pages/EditPlace";
+import Item from "./pages/Item";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/cupboards/edit/:id" element={<EditCupboard />} />
             <Route path="/places" element={<Places />} />
             <Route path="/places/edit/:id" element={<EditPlace />} />
+            <Route path="/items" element={<Item />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
