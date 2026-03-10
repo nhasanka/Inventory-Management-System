@@ -32,4 +32,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/places', [PlaceController::class, 'store']);
     Route::get('/places/{id}', [PlaceController::class, 'show']);
     Route::put('/places/{id}', [PlaceController::class, 'update']);
+
+    // item routes
+    Route::get('/items', [\App\Http\Controllers\Api\ItemController::class, 'index']);
+    Route::post('/items', [\App\Http\Controllers\Api\ItemController::class, 'store']);
+    Route::get('/items/{id}', [\App\Http\Controllers\Api\ItemController::class, 'show']);
+    Route::put('/items/{id}', [\App\Http\Controllers\Api\ItemController::class, 'update']);
+    Route::post('/items/{id}/increment', [\App\Http\Controllers\Api\ItemController::class, 'increment']);
+    Route::post('/items/{id}/decrement', [\App\Http\Controllers\Api\ItemController::class, 'decrement']);
 });
