@@ -1,0 +1,24 @@
+.tile {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+  display: block;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.tile h3 {
+  margin-bottom: 10px;
+}
+
+.tile p {
+  font-size: 14px;
+  color: gray;
+}
