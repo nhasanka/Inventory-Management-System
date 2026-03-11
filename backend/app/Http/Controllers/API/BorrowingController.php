@@ -40,12 +40,6 @@ class BorrowingController extends Controller
             'quantity' => 'required|integer|min:1'
         ]);
 
-        $borrowing = Borrowing::create([
-            'item_id' => $request->item_id,
-            'borrower_name' => $request->borrower_name,
-            'borrowed_at' => $request->borrowed_at,
-            'returned_at' => $request->returned_at,
-        ]);
 
         $item = Item::findOrFail($request->item_id);
 
