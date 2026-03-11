@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Tile from "../components/Tile/Tile";
 import "./style.css";
-import Users from "./Users";
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
@@ -15,14 +14,12 @@ function Dashboard() {
       {userName && <p>Welcome, {userName}!</p>}
 
       <div className="grid">
-        {isAdmin ? (
+        {isAdmin && (
           <Tile
             title="User Management"
             description="Manage system users"
             link="/users"
           />
-        ) : (
-          <p className="error">Only admins can access user management.</p>
         )}
         <Tile
           title="Cupboards"
@@ -47,14 +44,12 @@ function Dashboard() {
           description="Borrow and return items"
           link="/borrowings"
         />
-        {isAdmin ? (
+        {isAdmin && (
           <Tile
             title="Activity Logs"
             description="View system activity"
             link="/logs"
           />
-        ) : (
-          <p className="error">Only admins can access user management.</p>
         )}
       </div>
     </div>
