@@ -23,4 +23,9 @@ class Item extends Model
     {
         return $this->belongsTo(Place::class);
     }
+
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class);
+    }
 }
