@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\CupboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BorrowingController;
+use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\PlaceController;
 use App\Http\Controllers\API\UserController;
 
@@ -34,10 +36,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/places/{id}', [PlaceController::class, 'update']);
 
     // item routes
-    Route::get('/items', [\App\Http\Controllers\Api\ItemController::class, 'index']);
-    Route::post('/items', [\App\Http\Controllers\Api\ItemController::class, 'store']);
-    Route::get('/items/{id}', [\App\Http\Controllers\Api\ItemController::class, 'show']);
-    Route::put('/items/{id}', [\App\Http\Controllers\Api\ItemController::class, 'update']);
-    Route::post('/items/{id}/increment', [\App\Http\Controllers\Api\ItemController::class, 'increment']);
-    Route::post('/items/{id}/decrement', [\App\Http\Controllers\Api\ItemController::class, 'decrement']);
+    Route::get('/items', [ItemController::class, 'index']);
+    Route::post('/items', [ItemController::class, 'store']);
+    Route::get('/items/{id}', [ItemController::class, 'show']);
+    Route::put('/items/{id}', [ItemController::class, 'update']);
+    Route::post('/items/{id}/increment', [ItemController::class, 'increment']);
+    Route::post('/items/{id}/decrement', [ItemController::class, 'decrement']);
+
+    // borrowing routes
+    Route::get('/borrowings', [BorrowingController::class, 'index']);
+    Route::post('/borrowings', [BorrowingController::class, 'store']);
+    Route::post('/borrowings/{id}/return', [BorrowingController::class, 'returnItem']);
 });
