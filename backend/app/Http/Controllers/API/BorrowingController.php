@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Borrowing;
 use App\Models\Item;
 use Illuminate\Support\Facades\DB;
+use App\Services\ActivityLogService;
 
 class BorrowingController extends Controller
 {
@@ -15,7 +16,7 @@ class BorrowingController extends Controller
      */
     public function index()
     {
-        return Response()->json(Borrowing::with('item')->get());
+        return response()->json(Borrowing::with('item')->get());
     }
 
     /**
@@ -52,7 +53,7 @@ class BorrowingController extends Controller
 
         DB::transaction(function () use ($request, $item) {
 
-            Borrowing::create([
+            $borrow =   Borrowing::create([
                 'item_id' => $item->id,
                 'borrower_name' => $request->borrower_name,
                 'contact_details' => $request->contact_details,
@@ -61,6 +62,8 @@ class BorrowingController extends Controller
                 'quantity' => $request->quantity
             ]);
 
+            $oldQuantity = $item->quantity;
+
             // reduce stock
             $item->quantity -= $request->quantity;
 
@@ -68,6 +71,22 @@ class BorrowingController extends Controller
             $item->status = 'Borrowed';
 
             $item->save();
+
+            ActivityLogService::log(
+                'Item Borrowed',
+                'Borrowing',
+                $borrow->id,
+                null,
+                $borrow->toArray()
+            );
+
+            ActivityLogService::log(
+                'Quantity Decreased',
+                'Item',
+                $item->id,
+                ['quantity' => $oldQuantity],
+                ['quantity' => $item->quantity]
+            );
         });
 
         return response()->json(['message' => 'Item borrowed successfully']);
@@ -117,6 +136,8 @@ class BorrowingController extends Controller
 
             $item = Item::find($borrow->item_id);
 
+            $oldQuantity = $item->quantity;
+
             // restore stock
             $item->quantity += $borrow->quantity;
 
@@ -128,6 +149,24 @@ class BorrowingController extends Controller
 
             $borrow->status = 'returned';
             $borrow->save();
+
+            // 🔹 Borrow return log
+            ActivityLogService::log(
+                'Item Returned',
+                'Borrowing',
+                $borrow->id,
+                ['status' => 'Borrowed'],
+                ['status' => 'Returned']
+            );
+
+            // 🔹 Quantity increase log
+            ActivityLogService::log(
+                'Quantity Increased',
+                'Item',
+                $item->id,
+                ['quantity' => $oldQuantity],
+                ['quantity' => $item->quantity]
+            );
         });
 
         return response()->json(['message' => 'Item returned']);

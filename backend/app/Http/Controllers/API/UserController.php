@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use function Pest\Laravel\json;
+use App\Services\ActivityLogService;
 
 class UserController extends Controller
 {
@@ -45,6 +46,14 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role
         ]);
+
+        ActivityLogService::log(
+            'User Created',
+            'User',
+            $user->id,
+            null,
+            $user->toArray()
+        );
 
         return response()->json($user, 201);
     }

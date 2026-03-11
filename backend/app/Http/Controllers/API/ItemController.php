@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Services\ActivityLogService;
 use Symfony\Component\HttpFoundation\Response;
 
 class ItemController extends Controller
@@ -14,7 +15,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Response()->json(Item::with('place')->get());
+        return response()->json(Item::with('place')->get());
     }
 
     /**
@@ -52,6 +53,13 @@ class ItemController extends Controller
             'image' => $path ?? null
         ]);
 
+        ActivityLogService::log(
+            'Item Created',
+            'Item',
+            $item->id,
+            null,
+            $item->toArray()
+        );
         return response()->json($item);
     }
 
@@ -85,6 +93,8 @@ class ItemController extends Controller
             return response()->json(['message' => 'Item not found'], 404);
         }
 
+        $oldValues = $item->getOriginal();
+
         $request->validate([
             'name' => 'required',
             'code' => 'required|unique:items,code,' . $item->id,
@@ -107,6 +117,14 @@ class ItemController extends Controller
             'status' => $request->status,
         ]);
 
+        ActivityLogService::log(
+            'Item Updated',
+            'Item',
+            $item->id,
+            $oldValues,
+            $item->fresh()->toArray()
+        );
+
         return response()->json($item);
     }
 
@@ -121,7 +139,17 @@ class ItemController extends Controller
     {
         $item = Item::findOrFail($id);
 
+        $oldQuantity = $item->quantity;
+
         $item->increment('quantity');
+
+        ActivityLogService::log(
+            'Quantity Increased',
+            'Item',
+            $item->id,
+            ['quantity' => $oldQuantity],
+            ['quantity' => $item->quantity]
+        );
 
         return response()->json($item);
     }
@@ -136,7 +164,17 @@ class ItemController extends Controller
             ], 400);
         }
 
+        $oldQuantity = $item->quantity;
+
         $item->decrement('quantity');
+
+        ActivityLogService::log(
+            'Quantity Decreased',
+            'Item',
+            $item->id,
+            ['quantity' => $oldQuantity],
+            ['quantity' => $item->quantity]
+        );
 
         return response()->json($item);
     }
