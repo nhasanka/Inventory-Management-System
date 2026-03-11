@@ -22,16 +22,24 @@ function ItemForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await API.post("/items", {
-      name,
-      code,
-      quantity,
-      serial_number: serialNumber,
-      description,
-      place_id: placeId,
-      status,
-      image,
-    });
+    await API.post(
+      "/items",
+      {
+        name,
+        code,
+        quantity,
+        serial_number: serialNumber,
+        description,
+        place_id: placeId,
+        status,
+        image,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      },
+    );
 
     alert("Item Created");
   };

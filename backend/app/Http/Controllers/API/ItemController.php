@@ -38,6 +38,8 @@ class ItemController extends Controller
             'place_id' => 'required'
         ]);
 
+        $path = null;
+
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('items', 'public');
         }
@@ -50,7 +52,7 @@ class ItemController extends Controller
             'description' => $request->description,
             'place_id' => $request->place_id,
             'status' => $request->status,
-            'image' => $path ?? null
+            'image' => $path
         ]);
 
         ActivityLogService::log(
