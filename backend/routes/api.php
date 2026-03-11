@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\Api\CupboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,4 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/borrowings', [BorrowingController::class, 'index']);
     Route::post('/borrowings', [BorrowingController::class, 'store']);
     Route::post('/borrowings/{id}/return', [BorrowingController::class, 'returnItem']);
+
+    // activity log routes
+    Route::get('/activity-logs', [ActivityLogController::class, 'index']);
 });
