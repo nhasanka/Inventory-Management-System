@@ -14,7 +14,7 @@ function PlacesList() {
   };
 
   return (
-    <table border="1">
+    <table border="1" width="100%" cellPadding="10">
       <thead>
         <tr>
           <th>ID</th>

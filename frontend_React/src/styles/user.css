@@ -1,0 +1,47 @@
+.user-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.form-card {
+  width: 320px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-form input,
+.user-form select {
+  padding: 8px;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.user-form button {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.user-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #555;
+}

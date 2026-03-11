@@ -1,0 +1,31 @@
+.form-card {
+  max-width: 340px;
+  margin: 40px auto;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-card h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-card input,
+.form-card select {
+  padding: 9px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.form-card button {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}

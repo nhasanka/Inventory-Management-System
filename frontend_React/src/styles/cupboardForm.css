@@ -1,0 +1,24 @@
+.form-card {
+  width: 320px;
+  margin: 30px auto;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-card input {
+  padding: 8px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-card button {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}

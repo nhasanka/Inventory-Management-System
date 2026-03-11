@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../../api/api";
+import "../../styles/borrowForm.css";
 
 function BorrowForm() {
   const [itemId, setItemId] = useState("");
@@ -33,7 +34,9 @@ function BorrowForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-card borrow-form">
+      <h3>Borrow Item</h3>
+
       <select onChange={(e) => setItemId(e.target.value)}>
         <option>Select Item</option>
 
@@ -54,16 +57,18 @@ function BorrowForm() {
         onChange={(e) => setContactDetails(e.target.value)}
       />
 
-      <label>Borrow Date</label>
+      <div className="form-group">
+        <label>Borrow Date</label>
+        <input type="date" onChange={(e) => setBorrowDate(e.target.value)} />
+      </div>
 
-      <input type="date" onChange={(e) => setBorrowDate(e.target.value)} />
-
-      <label>Expected Return Date</label>
-
-      <input
-        type="date"
-        onChange={(e) => setExpectedReturnDate(e.target.value)}
-      />
+      <div className="form-group">
+        <label>Expected Return Date</label>
+        <input
+          type="date"
+          onChange={(e) => setExpectedReturnDate(e.target.value)}
+        />
+      </div>
 
       <input
         type="number"

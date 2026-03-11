@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import API from "../api/api";
+import "../styles/user.css";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -37,42 +38,40 @@ function Users() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="user-container">
       <h2>User Management</h2>
 
-      {/* Create User Form */}
+      <div className="form-card">
+        <form onSubmit={handleSubmit} className="user-form">
+          <input
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
-        <input
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="staff">Staff</option>
+            <option value="admin">Admin</option>
+          </select>
 
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="staff">Staff</option>
-          <option value="admin">Admin</option>
-        </select>
+          <button type="submit">Create User</button>
+        </form>
+      </div>
 
-        <button type="submit">Create User</button>
-      </form>
-
-      {/* Users Table */}
-
-      <table border="1" cellPadding="10">
+      <table className="user-table">
         <thead>
           <tr>
             <th>ID</th>

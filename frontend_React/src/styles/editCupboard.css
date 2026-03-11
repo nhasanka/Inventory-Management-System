@@ -1,0 +1,29 @@
+.page-container {
+  text-align: center;
+  padding: 40px;
+}
+
+.form-card {
+  width: 340px;
+  margin: 30px auto;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-card input {
+  padding: 9px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-card button {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}

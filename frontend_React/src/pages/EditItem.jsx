@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../api/api";
+import "../styles/editItem.css";
 
 function EditItem() {
   const { id } = useParams();
@@ -57,10 +58,10 @@ function EditItem() {
   };
 
   return (
-    <div>
+    <div className="page-container">
       <h2>Edit Item</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-card item-form">
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}

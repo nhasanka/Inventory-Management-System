@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../../api/api";
-
+import "../../styles/placeForm.css";
 function PlaceForm() {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -26,7 +26,7 @@ function PlaceForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-card">
       <h3>Create Place</h3>
 
       <input

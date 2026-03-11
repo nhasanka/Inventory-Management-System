@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../api/api";
+import "../styles/editCupboard.css";
 
 function EditCupboard() {
   const { id } = useParams();
@@ -40,10 +41,10 @@ function EditCupboard() {
   };
 
   return (
-    <div>
+    <div className="page-container">
       <h2>Edit Cupboard</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-card">
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}

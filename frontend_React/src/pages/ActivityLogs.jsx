@@ -17,7 +17,7 @@ function ActivityLogs() {
     <div>
       <h2>Activity Logs</h2>
 
-      <table border="1">
+      <table border="1" width="100%" cellPadding="10">
         <thead>
           <tr>
             <th>User</th>
@@ -36,7 +36,7 @@ function ActivityLogs() {
               <td>{log.action}</td>
               <td>{log.entity_type}</td>
               <td>{JSON.stringify(log.old_values)}</td>
-              <td>
+              <td style={{ textAlign: "left" }}>
                 {Object.entries(log.new_values || {})
                   .filter(
                     ([key]) => key !== "created_at" && key !== "updated_at",

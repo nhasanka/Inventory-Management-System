@@ -1,6 +1,6 @@
 import { useState } from "react";
 import API from "../../api/api";
-
+import "../../styles/cupboardForm.css";
 function CupboardForm({ fetchCupboards }) {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -26,7 +26,7 @@ function CupboardForm({ fetchCupboards }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-card">
       <input
         placeholder="Cupboard Name"
         value={name}

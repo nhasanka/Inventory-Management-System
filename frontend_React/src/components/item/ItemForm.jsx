@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../../api/api";
+import "../../styles/itemForm.css";
 
 function ItemForm() {
   const [name, setName] = useState("");
@@ -36,7 +37,7 @@ function ItemForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-card item-form">
       <input
         placeholder="Item Name"
         onChange={(e) => setName(e.target.value)}
@@ -79,7 +80,7 @@ function ItemForm() {
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
 
-      <button>Create Item</button>
+      <button type="submit">Create Item</button>
     </form>
   );
 }

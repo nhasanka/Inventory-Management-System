@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../api/api";
+import "../styles/editPlace.css";
 
 function EditPlace() {
   const { id } = useParams();
@@ -45,7 +46,7 @@ function EditPlace() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-card">
       <h3>Edit Place</h3>
 
       <input

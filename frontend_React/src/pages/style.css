@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 /* Dashboard Styles */
 .grid {
   display: grid;
