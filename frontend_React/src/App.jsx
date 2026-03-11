@@ -10,6 +10,7 @@ import Places from "./pages/Places";
 import EditPlace from "./pages/EditPlace";
 import Item from "./pages/Item";
 import EditItem from "./pages/EditItem";
+import Borrow from "./pages/Borrow";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/places/edit/:id" element={<EditPlace />} />
             <Route path="/items" element={<Item />} />
             <Route path="/items/edit/:id" element={<EditItem />} />
+            <Route path="/borrowings" element={<Borrow />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
