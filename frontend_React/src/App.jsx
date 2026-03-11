@@ -11,6 +11,7 @@ import EditPlace from "./pages/EditPlace";
 import Item from "./pages/Item";
 import EditItem from "./pages/EditItem";
 import Borrow from "./pages/Borrow";
+import ActivityLogs from "./pages/ActivityLogs";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/items" element={<Item />} />
             <Route path="/items/edit/:id" element={<EditItem />} />
             <Route path="/borrowings" element={<Borrow />} />
+            <Route path="/logs" element={<ActivityLogs />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
